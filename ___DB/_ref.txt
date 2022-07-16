@@ -1,0 +1,32 @@
+Laravel 9 User Role and Permission
+https://websolutionstuff.com/post/laravel-9-user-role-and-permission
+
+https://tomgrohl.medium.com/implementing-user-roles-into-a-laravel-application-f8b9b5c266a7
+
+https://codeanddeploy.com/blog/laravel/laravel-8-user-roles-and-permissions-step-by-step-tutorial
+
+
+Laravel Triple Relationship
+https://stackoverflow.com/questions/54149103/laravel-triple-relationship
+https://github.com/arjunyonjan/laravel-brands-categories-relation-filter-for-products/tree/master/app/models
+
+
+------------------------------
+https://laraveldaily.com/eloquent-recursive-hasmany-relationship-with-unlimited-subcategories/
+
+https://laracasts.com/discuss/channels/laravel/get-all-the-products-which-are-inside-parent-category-and-child-categories-in-laravel-with-the-help-of-relation
+
+https://laracasts.com/discuss/channels/laravel/subcategory-list-with-its-parent-category
+
+------------------------------
+Laravel 9 Notification Message PopUp using Toastr Js Plugin Example
+https://www.nicesnippets.com/blog/laravel-9-notification-message-popup-using-toastr-js-plugin-example
+https://codeseven.github.io/toastr/demo.html
+
+How to Install and Use CKEditor 5 in Laravel
+https://www.youtube.com/watch?v=lMe6scNMJMA
+https://image.intervention.io/v2/introduction/installation
+
+
+How to Upload file to S3 using Laravel Filesystem
+https://www.youtube.com/watch?v=9kMkMcOPL6k&list=PLaoZUFJYLaOYx_lyE2FJJzTqwRZf4GgWa&index=51
