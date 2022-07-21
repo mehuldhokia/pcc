@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
+
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Brand;
@@ -20,15 +21,15 @@ class WebsiteController extends Controller
         return view('website.welcome');
     }
 
-    public function login()
-    {
-        return view('website.login');
-    }
+    // public function login()
+    // {
+    //     return view('website.login');
+    // }
 
-    public function register()
-    {
-        return view('website.register');
-    }
+    // public function register()
+    // {
+    //     return view('website.register');
+    // }
 
     public function aboutus()
     {
@@ -63,14 +64,14 @@ class WebsiteController extends Controller
         return view('website.referral');
     }
 
-    public function photos()
+    public function photogallery()
     {
-        return view('website.photos');
+        return view('website.photogallery');
     }
 
-    public function videos()
+    public function videogallery()
     {
-        return view('website.videos');
+        return view('website.videogallery');
     }
 
     public function student_verification()

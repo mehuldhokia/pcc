@@ -21,9 +21,7 @@
                 </div>
             </div> <!-- Row end  -->
 
-            {{-- @include('messages') --}}
             @include('toastr')
-
 
             <div class="row g-3 mb-3">
                 <div class="col-md-12">
@@ -59,12 +57,12 @@
                                             <td align="center">
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                     <a href="#show{{ $contact->id }}" data-bs-toggle="modal"
-                                                        class="btn btn-outline-secondary"><i
-                                                            class="icofont-eye-alt text-primary"></i></a>
+                                                        class="btn btn-outline-secondary" title="Show Message">
+                                                        <i class="icofont-eye-alt text-primary"></i></a>
                                                     @can('contact-delete')
                                                         <a href="#delete{{ $contact->id }}" data-bs-toggle="modal"
-                                                            class="btn btn-outline-secondary deleterow"><i
-                                                                class="icofont-ui-delete text-danger"></i></a>
+                                                            class="btn btn-outline-secondary deleterow" title="Delete">
+                                                            <i class="icofont-ui-delete text-danger"></i></a>
                                                     @endcan
                                                 </div>
                                             </td>

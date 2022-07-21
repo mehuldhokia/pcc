@@ -8,7 +8,9 @@
     <div class="body d-flex pb-3">
         <div class="container-xxl">
 
-            @include('messages')
+            {{-- @include('messages') --}}
+            @include('toastr')
+
 
             {{-- @if ($userRole == 'Franchise')
                 @isset($franchiseInfo)
@@ -94,7 +96,35 @@
                     <div class="tab-content mt-1">
                         <div class="tab-pane fade show active" id="summery-today">
                             <div class="row g-1 g-sm-3 mb-3 row-deck">
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4">
+                                    <div class="card">
+                                        <div
+                                            class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
+                                            <div class="left-info">
+                                                <span class="text-muted">Franchise</span>
+                                                <div><span class="fs-6 fw-bold me-2">{{ $totalFranchises }}</span></div>
+                                            </div>
+                                            <div class="right-icon">
+                                                <i class="icofont-handshake-deal fs-3 color-lavender-purple"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4">
+                                    <div class="card">
+                                        <div
+                                            class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
+                                            <div class="left-info">
+                                                <span class="text-muted">Courses</span>
+                                                <div><span class="fs-6 fw-bold me-2">{{ $totalCourses }}</span></div>
+                                            </div>
+                                            <div class="right-icon">
+                                                <i class="icofont-book-alt fs-3 color-light-success"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4">
                                     <div class="card">
                                         <div
                                             class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
@@ -103,34 +133,50 @@
                                                 <div><span class="fs-6 fw-bold me-2">{{ $totalStudents }}</span></div>
                                             </div>
                                             <div class="right-icon">
-                                                <i class="icofont-student-alt fs-3 color-light-orange"></i>
+                                                <i class="icofont-student-alt fs-3 color-lightblue"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4">
                                     <div class="card">
                                         <div
                                             class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
                                             <div class="left-info">
-                                                <span class="text-muted">Order</span>
-                                                <div><span class="fs-6 fw-bold me-2">2314</span></div>
+                                                <span class="text-muted">Contacts</span>
+                                                <div><span class="fs-6 fw-bold me-2">{{ $totalContacts }}</span></div>
                                             </div>
                                             <div class="right-icon">
+                                                <i class="icofont-email fs-3 color-light-orange"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4">
+                                    <div class="card">
+                                        <div
+                                            class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
+                                            <div class="left-info">
+                                                <span class="text-muted">Photos</span>
+                                                <div><span class="fs-6 fw-bold me-2">{{ $totalPhotos }}</span></div>
+                                            </div>
+                                            <div class="right-icon">
+                                                <i class="icofont-image fs-3 color-lavender-purple"></i>
                                                 <i class="icofont-shopping-cart fs-3 color-lavender-purple"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4">
                                     <div class="card">
                                         <div
                                             class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
                                             <div class="left-info">
-                                                <span class="text-muted">Avg Sale</span>
-                                                <div><span class="fs-6 fw-bold me-2">$1770</span></div>
+                                                <span class="text-muted">Videos</span>
+                                                <div><span class="fs-6 fw-bold me-2">{{ $totalVideos }}</span></div>
                                             </div>
                                             <div class="right-icon">
+                                                <i class="icofont-video-alt fs-3 color-danger"></i>
                                                 <i class="icofont-sale-discount fs-3 color-santa-fe"></i>
                                             </div>
                                         </div>
@@ -206,20 +252,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                    <div class="card">
-                                        <div
-                                            class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                            <div class="left-info">
-                                                <span class="text-muted">Dealership / Vendor</span>
-                                                <div><span class="fs-6 fw-bold me-2">000</span></div>
-                                            </div>
-                                            <div class="right-icon">
-                                                <i class="icofont-handshake-deal fs-3 color-lavender-purple"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div> <!-- row end -->
                         </div>
                         <div class="tab-pane fade" id="summery-week">

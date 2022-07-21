@@ -24,7 +24,7 @@
                 </div>
             </div> <!-- Row end  -->
 
-            @include('messages')
+            @include('toastr')
 
             <div class="row clearfix g-3">
                 <div class="col-sm-12">
@@ -65,19 +65,20 @@
                                                 @can('course-update')
                                                     <div class="form-check form-switch">
                                                         <input type="checkbox" id="list-group2" data-id="{{ $course->id }}"
-                                                            class="form-check-input" {{ $course->status ? 'checked' : '' }}>
+                                                            title="Change Status" class="form-check-input"
+                                                            {{ $course->status ? 'checked' : '' }}>
                                                     </div>
                                                 @endcan
                                             </td>
                                             <td align="center">
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                     <a href="#show{{ $course->id }}" data-bs-toggle="modal"
-                                                        class="btn btn-outline-secondary"><i
-                                                            class="icofont-eye-alt text-primary"></i></a>
+                                                        class="btn btn-outline-secondary" title="Show">
+                                                        <i class="icofont-eye-alt text-primary"></i></a>
 
                                                     @can('course-update')
                                                         <a href="{{ route('courses.edit', $course->id) }}"
-                                                            class="btn btn-outline-secondary">
+                                                            class="btn btn-outline-secondary" title="Edit">
                                                             <i class="icofont-edit text-success"></i></a>
                                                     @endcan
 
@@ -88,14 +89,14 @@
                                                             {{ csrf_field() }}
                                                             {{ method_field('DELETE') }}
                                                         </form>
-                                                        <a href="" class="btn btn-outline-secondary"
+                                                        <a href="" class="btn btn-outline-secondary" title="Delete"
                                                             onclick="if(confirm('Are you sure, You Want to delete this?')) { event.preventDefault(); document.getElementById('delete-form-{{ $course->id }}').submit(); } else { event.preventDefault(); }">
                                                             <i class="icofont-ui-delete text-danger"></i> Delete
                                                         </a> --}}
 
                                                         <a href="#delete{{ $course->id }}" data-bs-toggle="modal"
-                                                            class="btn btn-outline-secondary deleterow"><i
-                                                                class="icofont-ui-delete text-danger"></i></a>
+                                                            class="btn btn-outline-secondary deleterow" title="Delete">
+                                                            <i class="icofont-ui-delete text-danger"></i></a>
                                                     @endcan
                                                 </div>
                                             </td>

@@ -52,7 +52,6 @@
         </div>
     </div>
 
-
     <!-- Delete City Modal -->
     <div class="modal fade" id="delete{{ $city->id }}" tabindex="-1" aria-hidden="true"
         aria-labelledby="deleteModelLabel">

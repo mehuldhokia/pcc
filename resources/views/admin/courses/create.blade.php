@@ -26,6 +26,9 @@
                         </div>
                     </div>
                 </div> <!-- Row end  -->
+
+                @include('toastr')
+
                 <div class="row clearfix g-3">
                     <div class="col-lg-8">
                         <div class="card mb-3">

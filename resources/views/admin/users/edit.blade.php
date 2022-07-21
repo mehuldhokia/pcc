@@ -40,7 +40,7 @@
                     </div>
                 </div> <!-- Row end  -->
 
-                @include('messages')
+                @include('toastr')
 
                 <div class="row g-3 mb-3">
                     <div class="col-lg-4">

@@ -16,7 +16,7 @@
                 </div>
             </div> <!-- Row end  -->
 
-            @include('messages')
+            @include('toastr')
 
             <div class="row g-3">
                 <div class="col-xl-4 col-lg-5 col-md-12">
@@ -32,7 +32,7 @@
                                     alt="" class="avatar xl rounded img-thumbnail shadow-sm">
 
                                 <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary"
-                                    style="position: absolute;top:15px;right: 15px;"><i class="icofont-edit"></i></a>
+                                    style="position: absolute;top:15px;right: 15px;" title="Edit"><i class="icofont-edit"></i></a>
 
                                 <div class="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
                                     <span class="text-muted small">ID : #{{ $user->id }}</span>

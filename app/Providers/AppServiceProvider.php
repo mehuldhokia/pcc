@@ -28,8 +28,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('*',function($view) {
-            if(Auth::check()) {
+        view()->composer('*', function($view) {
+            if(Auth::guard('web')->check()) {
                 $userRole = Auth::user()->roles->pluck('name','name')->first();
                 $view->with('userRole', $userRole);
 

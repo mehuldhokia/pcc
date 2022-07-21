@@ -1,6 +1,18 @@
 @extends('website.layouts.app')
 
 @section('header')
+    <style>
+        /* Hide Input Number Arrows */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -11,126 +23,153 @@
         <div class="container">
             <div class="row">
                 <!-- FORM -->
-                <div class="col-lg-6 col-md-offset-3">
-                    <div class="form-login" style="max-width:100%;border-radius: 10px;">
 
-                        <h2 class="text-uppercase">sign up</h2>
+                <form id="RegisterForm" method="post" action="{{ route('userprofile.registersubmit') }}"
+                    enctype="multipart/form-data" onsubmit="return validate();">
+                    @csrf
 
-                        <div class="form-email">
-                            <input type="text" name="fullname" placeholder="Full Name"
-                                class="form-control @error('fullname') is-invalid @enderror"
-                                value="{{ old('fullname') }}">
+                    <div class="col-lg-6 col-md-offset-3">
+                        <div class="form-login" style="max-width:100%;border-radius: 10px;">
 
-                            <!-- @Html.TextBoxFor(m => m.FullName, new { @placeholder = "Full name" })
-                                            @*@Html.TextBoxFor(m => m.LastName, new { @placeholder = "Last name" })*@
-                                            @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
-                                            @*@Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })*@ -->
-                        </div>
-                        <div class="form-email">
-                            <!-- @Html.TextBoxFor(m => m.Email, new { @placeholder = "Your Mail" })
-                                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" }) -->
-                            <input type="text" name="" placeholder="Your Mail" class="form-control">
+                            <h2 class="text-uppercase">sign up</h2>
 
-                        </div>
-                        <div class="form-email">
-                            <input type="text" name="" placeholder="Your Mobile" class="form-control">
-                            <!-- @Html.TextBoxFor(m => m.Mobile, new { @placeholder = "Your Mobile" })
-                                            @Html.ValidationMessageFor(m => m.Mobile, "", new { @class = "text-danger" }) -->
-                        </div>
+                            <div class="form-email">
+                                <input type="text" name="fullname" placeholder="Full Name"
+                                    class="form-control @error('fullname') is-invalid @enderror"
+                                    value="{{ old('fullname') }}" required>
+                                @error('fullname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-email">
+                                <input type="email" name="email" placeholder="Your Email Address"
+                                    class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}"
+                                    required>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-email">
+                                <input type="number" name="phone" placeholder="Your Mobile Number"
+                                    class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}"
+                                    required>
+                                @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                        <div class="form-email">
-                            <input type="text" name="" placeholder="Your Whatsapp No." class="form-control">
-                            <!-- @Html.TextBoxFor(m => m.WhatsappNo, new { @placeholder = "Your Whatsapp No." })
-                                            @Html.ValidationMessageFor(m => m.WhatsappNo, "", new { @class = "text-danger" }) -->
-                        </div>
+                            <div class="form-email">
+                                <input type="number" name="whatsappno" placeholder="Your WhatsApp Number"
+                                    class="form-control @error('whatsappno') is-invalid @enderror"
+                                    value="{{ old('whatsappno') }}" required>
+                                @error('whatsappno')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                        <div class="form-question mc-select">
-                            <select name="" id="" class="select">
-                                <option>Gender</option>
-                                <option value="M">Male</option>
-                                <option value="F">Female</option>
-                            </select>
-                            <!-- @Html.DropDownListFor(m => m.Gender, new List<SelectListItem>
-                                            { new SelectListItem{Text="Male", Value="M"},
-                                            new SelectListItem{Text="Female", Value="F"}}, "Gender", new { @class = "select" })
-                                            @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" }) -->
-                        </div>
-                        <div class="form-email">
-                            <input type="text" name="" id="" placeholder="DD/MM/YYYY"
-                                class="form-control">
-                            <!-- @Html.TextBoxFor(m => m.DOB, new { @placeholder = "DD/MM/YYYY" })
-                                            @*@Html.TextBoxFor(model => model.DOB, new { @class = "form-control border-radius-4", placeholder = "DD/MM/YYYY", maxlength = "100" })
-                       @Html.ValidationMessageFor(model => model.DOB) -->
-                        </div>
-                        <div class="form-email">
-                            <!-- @Html.TextBoxFor(m => m.UAddress, new { @placeholder = "Your Address" })
-                                            @Html.ValidationMessageFor(m => m.UAddress, "", new { @class = "text-danger" }) -->
-                            <input type="text" name="" id="" placeholder="Your Address"
-                                class="form-control">
-                        </div>
+                            <div class="form-question mc-select">
+                                <select name="gender" id="gender"
+                                    class="form-control select @error('gender') is-invalid @enderror" required>
+                                    <option value="">Gender</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                                @error('gender')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-email">
+                                <input type="date" name="dob" id="dob" placeholder="DD/MM/YYYY"
+                                    class="form-control w-100" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+                            </div>
+                            <div class="form-email">
+                                <textarea id="uaddress" name="uaddress" class="form-control @error('uaddress') is-invalid @enderror"
+                                    placeholder="Enter Your Address" rows="3">{{ old('uaddress') }}</textarea>
+                                @error('uaddress')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                        <div class="form-email">
-                            <!-- @Html.TextBoxFor(m => m.City, new { @placeholder = "Your City" })
-                                            @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" }) -->
-                            <input type="text" name="" id="" placeholder="Your City"
-                                class="form-control">
-                        </div>
+                            <div class="form-email">
+                                <input type="text" name="city" placeholder="Your City"
+                                    class="form-control @error('city') is-invalid @enderror" value="{{ old('city') }}"
+                                    required>
+                                @error('city')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                        <div class="form-question mc-select">
-                            <select class="select" id="ddlStd" name="ddlStd">
-                                <option value="">Please Select Qualification</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="B.Com">B.Com</option>
-                                <option value="M.Com">M.Com</option>
-                                <option value="BCA">BCA</option>
-                                <option value="MCA">MCA</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
+                            <div class="form-question mc-select">
+                                <select class="select" id="qualification_id" name="qualification_id">
+                                    <option value="0"> - Select Qualification - </option>
+                                    @foreach ($qualifications as $q)
+                                        <option value="{{ $q->id }}">{{ $q->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                        <div class="form-password">
-                            <!-- @Html.PasswordFor(m => m.Password, new { @placeholder = "Your Password" })
-                                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" }) -->
-                            <input type="password" name="" id="" placeholder="Your Password">
-                        </div>
+                            <div class="form-password">
+                                <input type="password" name="password"
+                                    class="form-control @error('password') is-invalid @enderror"
+                                    placeholder="6+ characters required">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                        <div class="form-email">
-                            <!-- @Html.TextBoxFor(m => m.ReferBy, new { @placeholder = "Referel", @readonly = "readonly" }) -->
-                            <input type="text" name="" id="" placeholder="Referel" class="form-control"
-                                readonly="readonly">
-                        </div>
+                            <div class="form-email">
+                                <input type="text" name="refer_code" id="refer_code" placeholder="Referral Code"
+                                    class="form-control @error('refer_code') is-invalid @enderror"
+                                    value="{{ old('refer_code') }}">
+                                @error('refer_code')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                        <div class="form-email">
-                            <input type="file" value="Profile Picture" name="UserImage"
-                                style="padding-top: 5px; height: 37px;" />
-                            <!-- @Html.ValidationMessageFor(m => m.UserImage, "", new { @class = "text-danger" }) -->
+                            <div class="form-email">
+                                <input type="file" name="photo" style="padding-top: 5px; height: 37px;"
+                                    class="form-control @error('photo') is-invalid @enderror" value="{{ old('photo') }}"
+                                    required>
+                                @error('photo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            {{-- <input type="hidden" name="created_date" id="created_date"
+                                class="form-control current_date"> --}}
+
+                            <div class="form-submit-1">
+                                <input type="submit" id="btnSubmit" value="Sign Up" class="mc-btn btn-style-1">
+                            </div>
+                            <div class="link">
+                                <a href="{{ route('userprofile.loginpage') }}">
+                                    <i class="icon md-arrow-right"></i>Already have account ? Log in
+                                </a>
+                            </div>
+                            </fieldset>
                         </div>
-                        <!-- @Html.HiddenFor(m => m.ReferCode)
-                                        @Html.HiddenFor(m => m.IsActive)
-                                        @*@Html.HiddenFor(m => m.IsValidate)*@
-                                        @Html.HiddenFor(m => m.CreatedDate) -->
-                        <div class="form-submit-1">
-                            <input type="submit" value="Sign Up" class="mc-btn btn-style-1">
-                        </div>
-                        <div class="link">
-                            <a href="{{ route('website.loginpage') }}">
-                                <i class="icon md-arrow-right"></i>Already have account ? Log in
-                            </a>
-                        </div>
-                        </fieldset>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </section>
@@ -140,4 +179,47 @@
 @section('js')
     <script src="styles/scripts/master.js"></script>
     <script src="styles/scripts/register.js"></script>
+
+    <script>
+        // var today;
+        // $(document).ready(function() {
+        //     // Set Default Date
+        //     today = new Date();
+        //     var dd = String(today.getDate()).padStart(2, '0');
+        //     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        //     var yyyy = today.getFullYear();
+        //     today = yyyy + '-' + mm + '-' + dd;
+        //     $(`.current_date`).val(today);
+        // });
+
+        // $('#RegisterForm').submit(function() {
+        function validate() {
+            if ($(`#qualification_id`).val() == 0) {
+                alert("Qualification not selected");
+                $(`#qualification_id`).focus();
+                return false;
+            } else {
+                return true;
+            }
+        }
+        // );
+
+        $("#refer_code").on("blur", function(e) {
+            e.preventDefault();
+
+            var rc = $("#refer_code").val();
+            if (rc) {
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url('/chk_refcode') }}/" + rc,
+                    success: function(data) {
+                        if (!data) {
+                            toastr.error("Invalid Referral Code");
+                            $("#refer_code").select();
+                        }
+                    },
+                });
+            }
+        });
+    </script>
 @endsection

@@ -42,6 +42,7 @@
 
 {{-- <!-- @*@Styles.Render("~/Content/css")*@ --> --}}
 
+<x-embed-styles />
 
 <!-- Toastr -->
 <link rel="stylesheet" href="{{ asset('dist/toastr/toastr.css') }}">

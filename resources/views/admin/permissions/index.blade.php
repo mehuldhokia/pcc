@@ -31,7 +31,7 @@
                 </div>
             </div> <!-- Row end  -->
 
-            @include('messages')
+            @include('toastr')
 
             <div class="row clearfix g-3">
                 <div class="col-sm-12">
@@ -62,13 +62,12 @@
                                             <td align="center">
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                     <a href="#edit{{ $permission->id }}" data-bs-toggle="modal"
-                                                        class="btn btn-outline-secondary"><i
-                                                            class="icofont-edit text-success"></i> Edit</a>
+                                                        class="btn btn-outline-secondary" title="Edit">
+                                                        <i class="icofont-edit text-success"></i> Edit</a>
 
                                                     <a href="#delete{{ $permission->id }}" data-bs-toggle="modal"
-                                                        class="btn btn-outline-secondary deleterow"><i
-                                                            class="icofont-ui-delete text-danger"></i> Delete</a>
-
+                                                        class="btn btn-outline-secondary deleterow" title="Delete">
+                                                        <i class="icofont-ui-delete text-danger"></i> Delete</a>
                                                 </div>
                                             </td>
                                             @include('admin.permissions.actionmodel')
@@ -155,5 +154,4 @@
             });
         });
     </script>
-
 @endsection

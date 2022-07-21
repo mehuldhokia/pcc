@@ -101,10 +101,10 @@
                 <div class="col-md-3">
                     <div class="create-course-sidebar" style="margin-top:10px!important;">
                         <ul class="list-bar border-none">
-                            <a href="{{ route('website.loginpage') }}">
+                            <a href="{{ route('userprofile.loginpage') }}">
                                 <li class="active"><span class="count"><i class="fa fa-key"></i></span>Login</li>
                             </a>
-                            <a href="{{ route('website.registerpage') }}">
+                            <a href="{{ route('userprofile.registerpage') }}">
                                 <li class="active"><span class="count"><i class="fa fa-pencil"></i></span>Register</li>
                             </a>
                         </ul>

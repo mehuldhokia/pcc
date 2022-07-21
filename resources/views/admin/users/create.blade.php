@@ -25,7 +25,7 @@
                     </div>
                 </div> <!-- Row end  -->
 
-                @include('messages')
+                @include('toastr')
 
                 <div class="row g-3 mb-3">
                     <div class="col-lg-4">
@@ -74,7 +74,7 @@
                                     <div class="col-md-6">
                                         <label for="phone" class="form-label">Phone</label>
                                         <input type="number" id="phone" name="phone"
-                                            class="form-control @error('name') is-invalid @enderror"
+                                            class="form-control @error('phone') is-invalid @enderror"
                                             placeholder="Enter Phone Number" value="{{ old('phone') }}" required>
                                         @error('phone')
                                             <span class="invalid-feedback" role="alert">

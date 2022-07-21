@@ -10,6 +10,10 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\User;
 use App\Models\Carousel;
+use App\Models\Photo;
+use App\Models\Video;
+use App\Models\Contact;
+use App\Models\Course;
 
 class HomeController extends Controller
 {
@@ -39,6 +43,17 @@ class HomeController extends Controller
             if($role == "Student")  $totalStudents += 1;
         }
 
-        return view('admin.layouts.dashboard', compact('totalAdmins', 'totalStudents'));
+        $totalFranchises = 0;
+
+        $totalContacts = $totalCarousels = $totalPhotos = $totalVideos = 0;
+
+        $totalCourses = Course::count();
+        $totalContacts = Contact::count();
+        $totalCarousels = Carousel::count();
+        $totalPhotos = Photo::count();
+        $totalVideos = Video::count();
+
+        return view('admin.layouts.dashboard',
+            compact('totalAdmins', 'totalFranchises', 'totalStudents', 'totalCourses', 'totalContacts', 'totalCarousels', 'totalPhotos', 'totalVideos'));
     }
 }

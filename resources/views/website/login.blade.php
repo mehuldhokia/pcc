@@ -11,33 +11,39 @@
         <div class="container">
             <div class="row">
 
-                <!-- FORM
-                {{-- @using (Html.BeginForm("Login", "Home", FormMethod.Post)) --}}
-                { -->
-                <fieldset>
-                    {{-- <!-- @Html.AntiForgeryToken() --> --}}
+                <form id="LoginForm" method="post" action="{{ route('userprofile.loginsubmit') }}">
+                    @csrf
+
+                    @include('toastr')
+
                     <div class="col-xs-12 col-lg-4 pull-right">
                         <div class="form-login" style="border-radius: 10px;">
                             <h2 class="text-uppercase">sign in</h2>
-                            <!-- @*<h6 style="color:red;font-weight:bold;">@Html.ValidationSummary(true)</h6>*@ -->
 
                             <div class="form-email">
-                                <input type="text" placeholder="Email or Mobile" name="EmailOrMobile" required>
-
+                                <label style="color: white; top: 15px; position: relative; margin:0px; padding: 0px;">Email
+                                    Address</label>
+                                <input id="email" type="email" name="email"
+                                    class="form-control @error('email') is-invalid @enderror" placeholder="name@example.com"
+                                    value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-password">
-                                <input type="password" name="Password" placeholder="Password" required>
-
+                                <label
+                                    style="color: white; top: 15px; position: relative; margin:0px; padding: 0px;">Password</label>
+                                <input id="password" type="password" name="password"
+                                    class="form-control @error('password') is-invalid @enderror" placeholder="**********"
+                                    required autocomplete="current-password">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
-
-                            {{-- <!-- @Html.ValidationSummary(true, "", new { @class = "text-danger" }) --}}
-                            {{-- @if (ViewBag . Message != null) --}}
-                            {{-- { --}}
-                                {{-- <div class="alert alert-warning" style="margin-top: 20px; background: red; color: white; padding: 10px;"> --}}
-                                    {{-- <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a> --}}
-                                    {{-- @ViewBag.Message --}}
-                                {{-- </div> --}}
-                            {{-- } --> --}}
 
                             <div class="form-check">
                                 <a href="">
@@ -46,17 +52,17 @@
                                 </a>
                             </div>
                             <div class="form-submit-1">
-                                {{-- <input type="submit" id="btnSubmit" value="Sign In" class="mc-btn btn-style-1"> --}}
-                                <a href="{{ route('studpanel.dashboard') }}" class="mc-btn btn-style-1">Sign In</a>
+                                <input type="submit" id="btnSubmit" value="Sign In" class="mc-btn btn-style-1">
+                                {{-- <a href="{{ route('userpanel.dashboard') }}" class="mc-btn btn-style-1">Sign In</a> --}}
                             </div>
                             <div class="link">
-                                <a href="{{ route('website.registerpage') }}">
+                                <a href="{{ route('userprofile.registerpage') }}">
                                     <i class="icon md-arrow-right"></i>Don’t have account yet ? Join Us
                                 </a>
                             </div>
                         </div>
                     </div>
-                </fieldset>
+                </form>
 
                 <!-- END / FORM -->
                 <div class="image">

@@ -34,10 +34,12 @@
                                 {{-- To Restrict Access --}}
                                 @can('user-delete')
                                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary"
-                                        style="position: absolute;top:15px;right: 15px;"><i class="icofont-edit"></i></a>
+                                        style="position: absolute;top:15px;right: 15px;" title="Edit"><i
+                                            class="icofont-edit"></i></a>
                                 @else
                                     <a href="{{ route('profile.edit', $user->id) }}" class="btn btn-primary"
-                                        style="position: absolute;top:15px;right: 15px;"><i class="icofont-edit"></i></a>
+                                        style="position: absolute;top:15px;right: 15px;" title="Edit"><i
+                                            class="icofont-edit"></i></a>
                                 @endcan
 
                                 <div class="about-info d-flex align-items-center mt-3 justify-content-center flex-column">

@@ -6,8 +6,8 @@
                 <li><i class="fa fa-envelope">&nbsp;&nbsp;</i><a href="mailto:itmsguj@gmail.com">itmsguj@gmail.com</a>
                 </li> |
                 {{-- @if (!User . Identity . IsAuthenticated) --}}
-                <li><a href="{{ route('website.loginpage') }}">Login </a></li> |
-                <li><a href="{{ route('website.registerpage') }}">Register </a></li>
+                <li><a href="{{ route('userprofile.loginpage') }}">Login </a></li> |
+                <li><a href="{{ route('userprofile.registerpage') }}">Register </a></li>
                 {{-- @endif --}}
             </ul>
         </div>
@@ -57,14 +57,14 @@
                     <a href="{{ route('website.referral') }}">Referral</a>
                 </li>
 
-                <li @if ($page == 'website.photos' || $page == 'website.videos') class="active" @endif>
+                <li @if ($page == 'website.photogallery' || $page == 'website.videogallery') class="active" @endif>
                     <a href="#">Gallery</a>
                     <ul class="sub-menu">
-                        <li @if ($page == 'website.photos') class="active" @endif>
-                            <a href="{{ route('website.photos') }}">Photos</a>
+                        <li @if ($page == 'website.photogallery') class="active" @endif>
+                            <a href="{{ route('website.photogallery') }}">Photos</a>
                         </li>
-                        <li @if ($page == 'website.videos') class="active" @endif>
-                            <a href="{{ route('website.videos') }}">Videos</a>
+                        <li @if ($page == 'website.videogallery') class="active" @endif>
+                            <a href="{{ route('website.videogallery') }}">Videos</a>
                         </li>
                     </ul>
                 </li>

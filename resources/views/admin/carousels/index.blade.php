@@ -26,9 +26,7 @@
                 </div>
             </div> <!-- Row end  -->
 
-            @include('messages')
-            {{-- @include('toastr') --}}
-
+            @include('toastr')
 
             <div class="row g-3 mb-3">
                 <div class="col-md-12">
@@ -65,7 +63,7 @@
                                                 @can('carousel-update')
                                                     <div class="form-check form-switch">
                                                         <input type="checkbox" id="list-group2" data-id="{{ $carousel->id }}"
-                                                            class="form-check-input"
+                                                            class="form-check-input" title="Change Status"
                                                             {{ $carousel->status ? 'checked' : '' }}>
                                                     </div>
                                                 @endcan
@@ -74,7 +72,7 @@
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                     @can('carousel-update')
                                                         <a href="{{ route('carousels.edit', $carousel->id) }}"
-                                                            class="btn btn-outline-secondary">
+                                                            class="btn btn-outline-secondary" title="Edit">
                                                             <i class="icofont-edit text-success"></i></a>
                                                     @endcan
 
@@ -85,7 +83,7 @@
                                                             {{ csrf_field() }}
                                                             {{ method_field('DELETE') }}
                                                         </form>
-                                                        <a href="" class="btn btn-outline-secondary"
+                                                        <a href="" class="btn btn-outline-secondary" title="Delete"
                                                             onclick="if(confirm('Are you sure, You Want to delete this?')) { event.preventDefault(); document.getElementById('delete-form-{{ $carousel->id }}').submit(); } else { event.preventDefault(); }">
                                                             <i class="icofont-ui-delete text-danger"></i>
                                                         </a>

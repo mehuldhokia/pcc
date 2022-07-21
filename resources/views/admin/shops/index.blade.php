@@ -20,7 +20,7 @@
                 </div>
             </div> <!-- Row end  -->
 
-            @include('messages')
+            @include('toastr')
 
             <div class="row g-3 mb-3">
                 <div class="col-md-12">
@@ -55,14 +55,15 @@
                                             <td>
                                                 <div class="form-check form-switch">
                                                     <input type="checkbox" id="list-group2" data-id="{{ $shop->id }}"
-                                                        class="form-check-input" {{ $shop->status ? 'checked' : '' }}>
+                                                        title="Change Status" class="form-check-input"
+                                                        {{ $shop->status ? 'checked' : '' }}>
                                                 </div>
                                             </td>
                                             <td align="center">
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                     @can('shop-read')
                                                         <a href="{{ route('shops.show', $shop->id) }}"
-                                                            class="btn btn-outline-secondary">
+                                                            class="btn btn-outline-secondary" title="Show">
                                                             <i class="icofont-eye-alt text-primary"></i> Show</a>
                                                     @endcan
 
@@ -79,7 +80,7 @@
                                                             {{ csrf_field() }}
                                                             {{ method_field('DELETE') }}
                                                         </form>
-                                                        <a href="" class="btn btn-outline-secondary"
+                                                        <a href="" class="btn btn-outline-secondary" title="Delete"
                                                             onclick="
                                                     if(confirm('Are you sure, You Want to delete this?'))
                                                         {

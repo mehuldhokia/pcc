@@ -21,13 +21,13 @@
                 </div>
             </div> <!-- Row end  -->
 
-            @include('messages')
+            @include('toastr')
 
             <div class="row clearfix g-3">
                 <div class="col-sm-4">
                     <form method="POST" action="{{ route('cities.store') }}">
                         @csrf
-                    <div class="card mb-3">
+                        <div class="card mb-3">
                             <div
                                 class="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
                                 <h6 class="m-0 fw-bold">Add New City</h6>
@@ -50,14 +50,15 @@
                                         <div class="form-group">
                                             <label for="status" class="form-label">Status</label>
                                             <div class="form-check">
-                                                <input name="status" class="form-check-input" type="radio"
-                                                    value="1" checked>
+                                                <input name="status" class="form-check-input" type="radio" value="1"
+                                                    checked>
                                                 <label class="form-check-label">
                                                     Active
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input name="status" class="form-check-input" type="radio" value="0">
+                                                <input name="status" class="form-check-input" type="radio"
+                                                    value="0">
                                                 <label class="form-check-label">
                                                     In-active
                                                 </label>
@@ -101,19 +102,20 @@
                                                 @can('city-update')
                                                     <div class="form-check form-switch">
                                                         <input type="checkbox" id="list-group2" data-id="{{ $city->id }}"
-                                                            class="form-check-input" {{ $city->status ? 'checked' : '' }}>
+                                                            title="Change Status" class="form-check-input"
+                                                            {{ $city->status ? 'checked' : '' }}>
                                                     </div>
                                                 @endcan
                                             </td>
                                             <td align="center">
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                     <a href="#edit{{ $city->id }}" data-bs-toggle="modal"
-                                                        class="btn btn-outline-secondary"><i
-                                                            class="icofont-edit text-success"></i></a>
+                                                        class="btn btn-outline-secondary" title="Edit">
+                                                        <i class="icofont-edit text-success"></i></a>
 
                                                     <a href="#delete{{ $city->id }}" data-bs-toggle="modal"
-                                                        class="btn btn-outline-secondary deleterow"><i
-                                                            class="icofont-ui-delete text-danger"></i></a>
+                                                        class="btn btn-outline-secondary deleterow" title="Delete">
+                                                        <i class="icofont-ui-delete text-danger"></i></a>
                                                 </div>
                                             </td>
                                             @include('admin.cities.actionmodel')

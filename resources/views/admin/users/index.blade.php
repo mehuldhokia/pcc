@@ -23,7 +23,7 @@
                 </div>
             </div> <!-- Row end  -->
 
-            @include('messages')
+            @include('toastr')
 
             <div class="row g-3 mb-3">
                 <div class="col-md-12">
@@ -64,20 +64,21 @@
                                             <td>
                                                 <div class="form-check form-switch">
                                                     <input type="checkbox" id="list-group2" data-id="{{ $user->id }}"
-                                                        class="form-check-input" {{ $user->status ? 'checked' : '' }}>
+                                                        title="Change Status" class="form-check-input"
+                                                        {{ $user->status ? 'checked' : '' }}>
                                                 </div>
                                             </td>
                                             <td align="center">
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                     @can('user-read')
                                                         <a href="{{ route('users.show', $user->id) }}"
-                                                            class="btn btn-outline-secondary">
+                                                            class="btn btn-outline-secondary" title="Show">
                                                             <i class="icofont-eye-alt text-primary"></i> Show</a>
                                                     @endcan
 
                                                     @can('user-update')
                                                         <a href="{{ route('users.edit', $user->id) }}"
-                                                            class="btn btn-outline-secondary">
+                                                            class="btn btn-outline-secondary" title="Edit">
                                                             <i class="icofont-edit text-success"></i> Edit</a>
                                                     @endcan
 
@@ -88,7 +89,7 @@
                                                             {{ csrf_field() }}
                                                             {{ method_field('DELETE') }}
                                                         </form>
-                                                        <a href="" class="btn btn-outline-secondary"
+                                                        <a href="" class="btn btn-outline-secondary" title="Delete"
                                                             onclick="
                                                     if(confirm('Are you sure, You Want to delete this?'))
                                                         {
@@ -135,7 +136,9 @@
                         "status": status,
                     },
                     success: function(data) {
-                        console.log(data.success);
+                        // console.log(data.success);
+                        // alert(data.success);
+                        toastr.success(data.success, 'Success');
                     }
                 });
             });
